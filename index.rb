@@ -9,4 +9,6 @@ puts Art.asciify("Daily Horoscope")
 puts "Enter Your name"
 name = gets.chomp.downcase
 session_user = find_or_create(name)
-puts "hi #{session_user.name}"
+session_user.initalize_sign
+session_user.save
+session_user.get_horoscope

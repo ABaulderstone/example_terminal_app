@@ -29,4 +29,11 @@ class User
     birthday_arr.map!(&:to_i)
     @sign = Date.new(birthday_arr[-1], birthday_arr[-2], birthday_arr[-3]).zodiac_sign
   end
+
+  def get_horoscope
+    response = HTTParty.get "http://horoscope-api.herokuapp.com/horoscope/today/#{@sign}"
+    reading = response.body
+    hash = JSON.parse reading
+    puts hash["horoscope"]
+  end
 end
