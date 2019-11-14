@@ -1,32 +1,37 @@
-def find_user (input)
-  found_users =[]
-  
-  $users.each do |user|  
-    if user["name"] == input 
-      found_users.push(user)
-    end 
+def find_user(input)
+  $users.each do |user|
+    if user["name"] == input
+      return user
+    end
   end
-  
-end 
+  return nil
+end
 
 def create_user
   puts "Enter your name"
   name = gets.chomp.downcase
   puts "Enter your birthday"
-  birthday = gets.chomp
+  birthday = get_valid_birthday
   puts "Enter your sign"
   sign = gets.chomp
-  user = { 
-    "name" => name,
-    "birthday" => birthday,
-    "sign" => sign, 
-    "history" => {}
-  }
+end
 
-  $users << user 
+def find_or_create(input)
+  user = find_user(input)
 
-  File.open('users.json', 'w') do |f|
-    f.write($users.to_json)
+  if user
+    return User.new(user["name"], user["birthday"], user["sign"], user["history"])
+  else
+    create_user
   end
+end
 
-end 
+def get_valid_birthday
+  puts "Please enter your birthday in DD/MM/YYYY format"
+  dob = gets.chomp
+  until !!dob[/\d{2}\/\d{2}\/\d{4}/]
+    puts "Please enter your birthday in DD/MM/YYYY format"
+    dob = gets.chomp
+  end
+  return dob
+end
