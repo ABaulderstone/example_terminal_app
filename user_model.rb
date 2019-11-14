@@ -1,3 +1,5 @@
+
+
 class User
   attr_accessor :sign, :history
   attr_reader :name
@@ -35,5 +37,10 @@ class User
     reading = response.body
     hash = JSON.parse reading
     puts hash["horoscope"]
+  end
+
+  def main_menu
+    choices = ["Get Today's Horoscope", "View History", "Check Another Sign", "Exit"]
+    Prompt.select("What would you like to do today?", choices)
   end
 end
