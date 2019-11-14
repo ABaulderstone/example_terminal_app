@@ -1,8 +1,8 @@
 require 'json'
 
 begin 
-database = open("./users.json")
-$users = JSON.parse(database.read)
+database = File.read("./users.json")
+$users = JSON.parse(database)
 rescue 
   puts "Unable to connect to database"
   exit 
