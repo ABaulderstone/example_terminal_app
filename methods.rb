@@ -21,6 +21,7 @@ end
 def find_or_create(name)
   user = find_user(name)
   if user
+    puts "Welcome back #{name}"
     session_user = User.new(user["name"], user["birthday"])
     return session_user
   else
