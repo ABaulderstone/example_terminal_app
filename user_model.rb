@@ -1,19 +1,20 @@
 class User
   attr_accessor :sign, :history
+  attr_reader :name
 
-  def initialize(name, birthday, sign = "", history = {})
+  def initialize(name, birthday)
     @name = name
     @birthday = birthday
-    @sign = sign
-    @history = history
+    @sign = ""
+    @history = {}
   end
 
   def save
     user = {
-      "name" => name,
-      "birthday" => birthday,
-      "sign" => sign,
-      "history" => {},
+      "name" => @name,
+      "birthday" => @birthday,
+      "sign" => @sign,
+      "history" => @history,
     }
 
     $users << user
@@ -24,8 +25,8 @@ class User
   end
 
   def initalize_sign
-    @birthday = birthday.split("/")
-    @birthday.map!(&:to_i)
-    sign = Date.new(birthday[-1], birthday[-2], birthday[-3]).zodiac_sign
+    birthday_arr = @birthday.split("/")
+    birthday_arr.map!(&:to_i)
+    @sign = Date.new(birthday_arr[-1], birthday_arr[-2], birthday_arr[-3]).zodiac_sign
   end
 end

@@ -1,3 +1,5 @@
+require_relative "./user_model.rb"
+
 def find_user(input)
   $users.each do |user|
     if user["name"] == input
@@ -12,17 +14,20 @@ def create_user
   name = gets.chomp.downcase
   puts "Enter your birthday"
   birthday = get_valid_birthday
-  puts "Enter your sign"
-  sign = gets.chomp
+  session_user = User.new(name, birthday)
+  session_user.initalize_sign
+  session_user.save
+  return session_user
 end
 
-def find_or_create(input)
-  user = find_user(input)
-
+def find_or_create(name)
+  user = find_user(name)
   if user
-    return User.new(user["name"], user["birthday"], user["sign"], user["history"])
+    session_user = User.new(user["name"], user["birthday"])
+    return session_user
   else
-    create_user
+    puts "Looks like we couldn't find #{name}"
+    user = create_user
   end
 end
 
