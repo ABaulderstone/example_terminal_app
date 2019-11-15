@@ -15,24 +15,28 @@ Art = Artii::Base.new
 Prompt = TTY::Prompt.new
 name = nil
 
-flag, *args = ARGV
-ARGV.clear
+if ARGV.length > 0
+  flag, *args = ARGV
+  ARGV.clear
 
-case flag
-when "-help"
-  require_relative "./help.rb"
-when "-name"
-  name = args[0].downcase
-when "-sign"
-  if User.signs_array.include?(args[0].capitalize)
-    puts "That's a valid sign"
+  case flag
+
+  when "-help"
+    require_relative "./help.rb"
+  when "-name"
+    name = args[0].downcase
+  when "-sign"
+    if User.signs_array.include?(args[0].capitalize)
+      data = fetch_horoscope(args[0])
+      display_horoscope(args[0].capitalize, Today.to_s, data)
+    else
+      puts "That's not a sign".colorize(:red)
+    end
+    exit(0)
   else
-    puts "That's not a sign"
+    puts "Invalid Argument"
+    exit(0)
   end
-  exit(0)
-else
-  puts "Invalid Argument"
-  exit(0)
 end
 
 puts Art.asciify("Daily Horoscope")

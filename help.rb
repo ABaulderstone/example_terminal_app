@@ -1,2 +1,1 @@
-puts "Looks like you need some help"
-exit(0)
+Prompt.ask("Do you need help?")

@@ -93,3 +93,14 @@ def welcome_message(user)
   system "clear"
   puts Art.asciify("#{user.name.capitalize} - #{user.sign}")
 end
+
+def fetch_horoscope(sign)
+  begin
+    response = HTTParty.get "http://horoscope-api.herokuapp.com/horoscope/today/#{sign}"
+    reading = response.body
+    hash = JSON.parse reading
+    data = hash["horoscope"]
+  rescue
+    data = "Oops looks like we're having trouble connecting to the server \n\n\n".colorize(:red)
+  end
+end

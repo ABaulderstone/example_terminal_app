@@ -45,21 +45,15 @@ class User
   end
 
   def get_todays_horoscope
-    response = HTTParty.get "http://horoscope-api.herokuapp.com/horoscope/today/#{@sign}"
-    reading = response.body
-    hash = JSON.parse reading
-    data = hash["horoscope"]
+    data = fetch_horoscope(@sign)
     display_horoscope(@sign, Today.to_s, data)
     @history[Today.to_s] = data
   end
 
   def check_other_sign
     choice = Prompt.select("Which sign do you want to check?", @@signs_array)
-    response = HTTParty.get "http://horoscope-api.herokuapp.com/horoscope/today/#{choice}"
-    reading = response.body
-    hash = JSON.parse reading
     wait_clear
-    data = hash["horoscope"]
+    data = data = fetch_horoscope(choice)
     display_horoscope(choice, Today.to_s, data)
   end
 
@@ -69,6 +63,7 @@ class User
       display_horoscope(@sign, choice, @history[choice])
     else
       puts "Ooops, looks like there's no history to display".colorize(:red)
+      puts "\n\n\n"
     end
   end
 
