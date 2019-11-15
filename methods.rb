@@ -88,3 +88,8 @@ def welcome_back(name)
   puts "Fetching your history"
   wait_clear
 end
+
+def welcome_message(user)
+  system "clear"
+  puts Art.asciify("#{user.name.capitalize} - #{user.sign}")
+end

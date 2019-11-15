@@ -4,23 +4,26 @@ require "httparty"
 require "artii"
 require "tty-prompt"
 require "date"
+
 require_relative "./database_setup.rb"
 require_relative "./methods.rb"
+
 Today = Date.today
 Art = Artii::Base.new
 Prompt = TTY::Prompt.new
+
 puts Art.asciify("Daily Horoscope")
+
 puts "Enter Your name"
 name = gets.chomp.downcase
 session_user = find_or_create(name)
 session_user.initalize_sign
 session_user.save
-system "clear"
-puts Art.asciify("#{session_user.name.capitalize} - #{session_user.sign}")
+welcome_message(session_user)
 
 while true
   menu_choice = session_user.main_menu
-  system "clear"
+  welcome_message(session_user)
   case menu_choice
   when 1
     session_user.get_todays_horoscope
