@@ -78,8 +78,7 @@ end
 def display_horoscope(sign, date, data)
   system "clear"
   puts Art.asciify("#{sign} : #{date}")
-  puts
-  puts
+  puts "\n\n"
   puts data
 end
 
