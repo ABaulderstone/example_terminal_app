@@ -3,6 +3,7 @@ require "zodiac"
 require "httparty"
 require "artii"
 require "tty-prompt"
+require "colorize"
 require "date"
 
 require_relative "./database_setup.rb"

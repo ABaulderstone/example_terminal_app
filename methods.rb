@@ -44,7 +44,7 @@ def get_valid_birthday
   puts "Please enter your birthday in DD/MM/YYYY format"
   dob = gets.chomp
   until !!dob[/\d{2}\/\d{2}\/\d{4}/]
-    puts "Please enter your birthday in DD/MM/YYYY format"
+    puts "Please enter your birthday in DD/MM/YYYY format".colorize(:red)
     dob = gets.chomp
   end
   return dob
@@ -54,7 +54,7 @@ def validated_yes_or_no(message)
   puts message
   input = gets.chomp.downcase.chars.first
   until input == "y" || input == "n"
-    puts "Please enter either (y)es or (n)o"
+    puts "Please enter either (y)es or (n)o".colorize(:red)
     puts message
     input = gets.chomp.downcase.chars.first
   end

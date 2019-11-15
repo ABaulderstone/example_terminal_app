@@ -65,7 +65,7 @@ class User
       choice = Prompt.select("Select a date", @history.keys)
       display_horoscope(@sign, choice, @history[choice])
     else
-      puts "Ooops, looks like there's no history to display"
+      puts "Ooops, looks like there's no history to display".colorize(:red)
     end
   end
 
