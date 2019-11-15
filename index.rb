@@ -15,6 +15,8 @@ name = gets.chomp.downcase
 session_user = find_or_create(name)
 session_user.initalize_sign
 session_user.save
+system "clear"
+puts Art.asciify("#{session_user.name.capitalize} - #{session_user.sign}")
 
 while true
   menu_choice = session_user.main_menu

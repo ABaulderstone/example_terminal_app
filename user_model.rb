@@ -6,11 +6,11 @@ class User
 
   @@signs_array = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
 
-  def initialize(name, birthday)
+  def initialize(name, birthday, history)
     @name = name
     @birthday = birthday
     @sign = ""
-    @history = {}
+    @history = history
   end
 
   def add_to_users
