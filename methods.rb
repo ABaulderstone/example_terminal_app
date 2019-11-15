@@ -51,6 +51,13 @@ def wait_clear
   system "clear"
 end
 
+def display_horoscope(sign, date, data)
+  puts Art.asciify("#{sign}: #{date}")
+  puts
+  puts
+  puts data
+end
+
 def welcome_back(name)
   puts "Welcome back #{name}"
   wait_clear

@@ -1,4 +1,4 @@
-
+require_relative "./methods.rb"
 
 class User
   attr_accessor :sign, :history
@@ -40,8 +40,9 @@ class User
     response = HTTParty.get "http://horoscope-api.herokuapp.com/horoscope/today/#{@sign}"
     reading = response.body
     hash = JSON.parse reading
-    puts hash["horoscope"]
-    @history[Today.to_s] = hash["horoscope"]
+    data = hash["horoscope"]
+    display_horoscope(@sign, Today.to_s, data)
+    @history[Today.to_s] = data
   end
 
   def check_other_sign
@@ -49,10 +50,13 @@ class User
     response = HTTParty.get "http://horoscope-api.herokuapp.com/horoscope/today/#{choice}"
     reading = response.body
     hash = JSON.parse reading
-    puts hash["horoscope"]
+    wait_clear
+    data = hash["horoscope"]
+    display_horoscope(choice, Today.to_s, data)
   end
 
   def view_history
+    choice = Prompt.select("Select a date", @history.keys)
   end
 
   def main_menu
