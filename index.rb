@@ -8,6 +8,7 @@ require "date"
 
 require_relative "./database_setup.rb"
 require_relative "./methods.rb"
+require_relative "./user_model.rb"
 
 Today = Date.today
 Art = Artii::Base.new
@@ -19,9 +20,16 @@ ARGV.clear
 
 case flag
 when "-help"
+  require_relative "./help.rb"
 when "-name"
-  name = args[0]
+  name = args[0].downcase
 when "-sign"
+  if User.signs_array.include?(args[0].capitalize)
+    puts "That's a valid sign"
+  else
+    puts "That's not a sign"
+  end
+  exit(0)
 else
   puts "Invalid Argument"
   exit(0)

@@ -5,6 +5,9 @@ class User
   attr_reader :name
 
   @@signs_array = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
+  def self.signs_array
+    @@signs_array
+  end
 
   def initialize(name, birthday, history)
     @name = name
