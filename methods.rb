@@ -15,6 +15,7 @@ def create_user
   puts "Enter your birthday"
   birthday = get_valid_birthday
   session_user = User.new(name, birthday)
+  session_user.add_to_users
   return session_user
 end
 

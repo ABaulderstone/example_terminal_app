@@ -13,7 +13,7 @@ class User
     @history = {}
   end
 
-  def save
+  def add_to_users
     user = {
       "name" => @name,
       "birthday" => @birthday,
@@ -22,7 +22,9 @@ class User
     }
 
     $users << user
+  end
 
+  def save
     File.open("./users.json", "w") do |f|
       f.write($users.to_json)
     end
@@ -39,6 +41,7 @@ class User
     reading = response.body
     hash = JSON.parse reading
     puts hash["horoscope"]
+    @history[Today.to_s] = hash["horoscope"]
   end
 
   def check_other_sign
