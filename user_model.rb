@@ -61,8 +61,12 @@ class User
   end
 
   def view_history
-    choice = Prompt.select("Select a date", @history.keys)
-    display_horoscope(@sign, choice, @history[choice])
+    if @history.keys.length > 0
+      choice = Prompt.select("Select a date", @history.keys)
+      display_horoscope(@sign, choice, @history[choice])
+    else
+      puts "Ooops, looks like there's no history to display"
+    end
   end
 
   def main_menu
