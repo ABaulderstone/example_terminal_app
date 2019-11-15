@@ -12,11 +12,28 @@ require_relative "./methods.rb"
 Today = Date.today
 Art = Artii::Base.new
 Prompt = TTY::Prompt.new
+name = nil
+
+flag, *args = ARGV
+ARGV.clear
+
+case flag
+when "-help"
+when "-name"
+  name = args[0]
+when "-sign"
+else
+  puts "Invalid Argument"
+  exit(0)
+end
 
 puts Art.asciify("Daily Horoscope")
 
-puts "Enter Your name"
-name = gets.chomp.downcase
+unless name
+  puts "Enter Your name"
+  name = gets.chomp.downcase
+end
+
 session_user = find_or_create(name)
 session_user.initalize_sign
 session_user.save
