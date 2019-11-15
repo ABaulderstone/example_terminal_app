@@ -4,6 +4,8 @@ class User
   attr_accessor :sign, :history
   attr_reader :name
 
+  @@signs_array = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
+
   def initialize(name, birthday)
     @name = name
     @birthday = birthday
@@ -32,15 +34,33 @@ class User
     @sign = Date.new(birthday_arr[-1], birthday_arr[-2], birthday_arr[-3]).zodiac_sign
   end
 
-  def get_horoscope
+  def get_todays_horoscope
     response = HTTParty.get "http://horoscope-api.herokuapp.com/horoscope/today/#{@sign}"
     reading = response.body
     hash = JSON.parse reading
     puts hash["horoscope"]
   end
 
+  def check_other_sign
+    choice = Prompt.select("Which sign do you want to check?", @@signs_array)
+    response = HTTParty.get "http://horoscope-api.herokuapp.com/horoscope/today/#{choice}"
+    reading = response.body
+    hash = JSON.parse reading
+    puts hash["horoscope"]
+  end
+
+  def view_history
+  end
+
   def main_menu
-    choices = ["Get Today's Horoscope", "View History", "Check Another Sign", "Exit"]
+    choices = { "Get Today's Horoscope" => 1, "View History" => 2, "Check Another Sign" => 3, "Exit" => 4 }
     Prompt.select("What would you like to do today?", choices)
+  end
+
+  def quit
+    system "clear"
+    sleep(1)
+    puts "Goodbye"
+    exit(0)
   end
 end

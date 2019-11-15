@@ -21,8 +21,8 @@ end
 def find_or_create(name)
   user = find_user(name)
   if user
-    puts "Welcome back #{name}"
     session_user = User.new(user["name"], user["birthday"])
+    welcome_back(name)
     return session_user
   else
     puts "Looks like we couldn't find #{name}"
@@ -38,4 +38,19 @@ def get_valid_birthday
     dob = gets.chomp
   end
   return dob
+end
+
+def wait_clear
+  puts "."
+  sleep(1)
+  puts "."
+  sleep(1)
+  puts "."
+  sleep(1)
+  system "clear"
+end
+
+def welcome_back(name)
+  puts "Welcome back #{name}"
+  wait_clear
 end
