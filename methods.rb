@@ -52,7 +52,8 @@ def wait_clear
 end
 
 def display_horoscope(sign, date, data)
-  puts Art.asciify("#{sign}: #{date}")
+  system "clear"
+  puts Art.asciify("#{sign} : #{date}")
   puts
   puts
   puts data

@@ -17,12 +17,12 @@ session_user.initalize_sign
 session_user.save
 
 while true
-  # system "clear"
   menu_choice = session_user.main_menu
   system "clear"
   case menu_choice
   when 1
     session_user.get_todays_horoscope
+    session_user.update_history
     session_user.save
   when 2
     session_user.view_history

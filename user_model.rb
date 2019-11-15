@@ -24,6 +24,11 @@ class User
     $users << user
   end
 
+  def update_history
+    index = $users.index { |user| user["name"] == @name }
+    $users[index]["history"] == @history
+  end
+
   def save
     File.open("./users.json", "w") do |f|
       f.write($users.to_json)
@@ -57,6 +62,7 @@ class User
 
   def view_history
     choice = Prompt.select("Select a date", @history.keys)
+    display_horoscope(@sign, choice, @history[choice])
   end
 
   def main_menu
