@@ -4,6 +4,8 @@ begin
   $users = JSON.parse(database)
   puts "Connected to database"
 rescue
-  puts "Unable to connect to database"
-  exit
+  puts "Creating database..."
+  File.open("./db/users.json", "w") do |f|
+    f.write([].to_json)
+  end
 end
