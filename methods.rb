@@ -51,7 +51,7 @@ def get_valid_birthday
 end
 
 def validated_yes_or_no(message)
-  puts message
+  puts message + "  (Y/n)"
   input = gets.chomp.downcase.chars.first
   until input == "y" || input == "n"
     puts "Please enter either (y)es or (n)o".colorize(:red)

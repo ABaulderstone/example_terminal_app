@@ -1,5 +1,4 @@
 require "json"
-
 begin
   database = File.read("db/users.json")
   $users = JSON.parse(database)
