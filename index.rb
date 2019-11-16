@@ -6,7 +6,7 @@ require "tty-prompt"
 require "colorize"
 require "date"
 
-require_relative "./database_setup.rb"
+require_relative "./db/database_setup.rb"
 require_relative "./methods.rb"
 require_relative "./user_model.rb"
 

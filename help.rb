@@ -5,13 +5,13 @@ while true
   case help_selection
   when 1
     puts Art.asciify("Installation")
-    File.open("./installation.txt").each do |line|
+    File.open("./resources/installation.txt").each do |line|
       puts line
     end
     puts "\n\n\n"
   when 2
     puts Art.asciify("Installation")
-    File.open("./flags.txt").each do |line|
+    File.open("./resources/flags.txt").each do |line|
       puts line
     end
     puts "\n\n\n"
