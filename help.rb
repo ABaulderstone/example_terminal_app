@@ -10,7 +10,7 @@ while true
     end
     puts "\n\n\n"
   when 2
-    puts Art.asciify("Installation")
+    puts Art.asciify("Flags")
     File.open("./resources/flags.txt").each do |line|
       puts line
     end
