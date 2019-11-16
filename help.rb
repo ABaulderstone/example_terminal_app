@@ -4,9 +4,17 @@ while true
   system "clear"
   case help_selection
   when 1
-    puts "Instructions go here"
+    puts Art.asciify("Installation")
+    File.open("./installation.txt").each do |line|
+      puts line
+    end
+    puts "\n\n\n"
   when 2
-    puts "Flag Options go here"
+    puts Art.asciify("Installation")
+    File.open("./flags.txt").each do |line|
+      puts line
+    end
+    puts "\n\n\n"
   when 3
     break
   when 4

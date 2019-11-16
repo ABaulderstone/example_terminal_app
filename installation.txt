@@ -1,0 +1,7 @@
+1. Make sure Ruby is installed - using rvm or your preffered ruby version manager
+2. Install Ruby 2.6.3
+3. Ensure you are running Ruby 2.6.3 
+4. Either run install_run.sh OR the following steps 
+- Install bundler ($ gem install bundler)
+- $ bundle install
+- $ ruby index.rb

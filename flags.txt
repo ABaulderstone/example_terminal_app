@@ -1,0 +1,3 @@
+-help : Launches help file, you're already here
+-name *NAME* : Runs Daily horoscope with the name provided
+-sign *SIGN* : Fetches today's horoscope for the name provided and exits. Does not save horoscope or use an account
