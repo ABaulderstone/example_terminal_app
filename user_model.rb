@@ -33,7 +33,7 @@ class User
   end
 
   def save
-    File.open("./users.json", "w") do |f|
+    File.open("./db/users.json", "w") do |f|
       f.write($users.to_json)
     end
   end
