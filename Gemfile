@@ -10,7 +10,7 @@ gem "artii", "~> 2.1"
 
 gem "zodiac", "~> 0.2.10"
 
-gem "httparty", "~> 0.17.1"
+gem "httparty", "~> 0.21.0"
 
 gem "tty-prompt", "~> 0.19.0"
 
